@@ -1,0 +1,8 @@
+{
+    "name": "gabi/cidadeconectada",
+    "require": {
+        "slim/slim": "4.9",
+        "nyholm/psr7": "*",
+        "tuupola/cors-middleware": "*"
+    }
+}
