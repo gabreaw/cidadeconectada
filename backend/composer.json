@@ -3,6 +3,6 @@
     "require": {
         "slim/slim": "4.9",
         "nyholm/psr7": "*",
-        "tuupola/cors-middleware": "*"
+        "tuupola/cors-middleware": "^1.4"
     }
 }

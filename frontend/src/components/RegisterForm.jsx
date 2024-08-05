@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import cclogo from "../assets/cc-logo.svg";
 import "../styles/App.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -24,7 +25,12 @@ const RegisterForm = () => {
     try {
       const response = await axios.post(
         "http://localhost:8000/api/register",
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       console.log(response.data);
       navigate("/login");
@@ -32,6 +38,7 @@ const RegisterForm = () => {
       console.error("Erro ao registrar:", error);
     }
   };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -42,23 +49,35 @@ const RegisterForm = () => {
         <form onSubmit={handleRegister} className="space-y-4">
           <input
             type="text"
+            name="nome"
             placeholder="Seu nome"
+            value={formData.nome}
+            onChange={handleInputChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="email"
+            name="email"
             placeholder="Seu email"
+            value={formData.email}
+            onChange={handleInputChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="text"
+            name="cpf"
             placeholder="Seu CPF"
+            value={formData.cpf}
+            onChange={handleInputChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <div className="relative">
             <input
               type="password"
+              name="senha"
               placeholder="Sua senha"
+              value={formData.senha}
+              onChange={handleInputChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
@@ -82,7 +101,10 @@ const RegisterForm = () => {
           <div className="relative">
             <input
               type="password"
+              name="confirmarSenha"
               placeholder="Confirme sua senha"
+              value={formData.confirmarSenha}
+              onChange={handleInputChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button

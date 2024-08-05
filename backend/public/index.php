@@ -1,26 +1,43 @@
 <?php
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
-use Tuupola\Middleware\CorsMiddleware;
+use Src\Config\Database;
+use Src\Routes\Router;
 
-require __DIR__ . '/../vendor/autoload.php'; 
+require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
-$cors = new CorsMiddleware([
-    "origin" => ["*"],
-    "methods" => ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    "headers.allow" => ["Authorization", "Content-Type", "Accept", "Origin"],
-    "headers.expose" => [],
-    "credentials" => true,
-    "cache" => 86400
-]);
+$app->addBodyParsingMiddleware();
 
-$app->add($cors);
+$app->add(function ($request, $handler) {
+    if ($request->getMethod() === 'OPTIONS') {
+        $response = new \Slim\Psr7\Response();
+        return $response
+            ->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Credentials', 'true')
+            ->withStatus(200);
+    }
+    return $handler->handle($request)
+        ->withHeader('Access-Control-Allow-Origin', '*')
+        ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+        ->withHeader('Access-Control-Allow-Credentials', 'true')
+        ->withStatus(200);
+});
 
-// Incluir rotas
-(require __DIR__ . '/../src/routes.php')($app);
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-$app->run();
+$app->addRoutingMiddleware();
+
+$app->addErrorMiddleware(true, true, true);
+
+$schema = new Database();
+
+$router = new Router($app, $schema);
+
+$router->run();

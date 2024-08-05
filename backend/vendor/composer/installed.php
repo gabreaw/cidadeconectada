@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'gabi/cidadeconectada',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '8e52f3d6a1df64fa13433d23ecbc9899f4c8bf06',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'gabi/cidadeconectada' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '8e52f3d6a1df64fa13433d23ecbc9899f4c8bf06',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
