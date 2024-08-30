@@ -1,9 +1,12 @@
+import Header from "./components/Header/Header";
+
 const Inicio = () => {
-    return (
-        <div>
-            <h1>oi</h1>
-        </div>
-    )
-}
+  return (
+    <>
+      <Header />
+      <div></div>
+    </>
+  );
+};
 
 export default Inicio;
