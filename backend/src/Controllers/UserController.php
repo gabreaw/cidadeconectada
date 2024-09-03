@@ -1,21 +1,75 @@
 <?php
 
-namespace App\Controller;
+namespace Src\Controllers;
 
+use Firebase\JWT\JWT;
+use Src\Models\User;
 use Psr\Http\Message\ResponseInterface as Response;
+use Src\Config\Database;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Model\User;
 
+/**
+ * Class AuthController
+ * @package Src\Controllers
+ */
 class UserController
 {
-    public function register(Request $request, Response $response, $args)
+    /**
+     * @var User
+     */
+    private $userModel;
+
+    /**
+     * @param User $userModel
+     */
+    public function __construct()
     {
-        $data = $request->getParsedBody();
-        
-        $userModel = new User();
-        $result = $userModel->createUser($data);
-        
-        $response->getBody()->write(json_encode($result));
-        return $response->withHeader('Content-Type', 'application/json');
+        $database = (new Database())->getConnection();
+        $this->userModel = new User($database);
+    }
+
+    /**
+     * Handle user login
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return Response
+     */
+    public function login(Request $request, Response $response, array $args): Response
+    {
+        $data = json_decode($request->getBody()->getContents(), true);
+        $username = $data['username'] ?? '';
+        $password = $data['password'] ?? '';
+
+        $user = $this->userModel;
+        $user->username = $username;
+
+        $userData = $user->login();
+
+        if ($userData && password_verify($password, $userData['password'])) {
+            $key = $_ENV['JWT_SECRET'];
+            $payload = [
+                "user_id" => $userData['id'],
+                "username" => $username,
+                "is_admin" => $userData['is_admin']
+            ];
+
+            $jwt = JWT::encode($payload, $key, 'HS256');
+            return $this->jsonResponse($response, ['token' => $jwt], 200);
+        }
+
+        return $this->jsonResponse($response, ['message' => 'Login falhou. Usuário ou senha incorretos.'], 401);
+    }
+
+    /**
+     * @param Response $response
+     * @param array $data
+     * @param int $status
+     * @return Response
+     */
+    private function jsonResponse(Response $response, array $data, int $status): Response
+    {
+        $response->getBody()->write(json_encode($data));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus($status);
     }
 }
