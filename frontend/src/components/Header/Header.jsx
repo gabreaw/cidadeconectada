@@ -6,8 +6,8 @@ import Foto from "./icones/Foto.svg";
 
 const Header = () => {
   return (
-    <div className="bg-white flex justify-between items-center px-6 shadow-xl">
-      <div className="flex items-center ml-4">
+    <header className="bg-white flex justify-between items-center px-6 h-[89px] border-b border-gray-300">
+      <div className="flex items-center justify-start border-r border-gray-300 h-full w-[247px]">
         <img src={Logo} alt="Logo" className="w-7 h-7 mr-2" />
         <h1 className="text-xl font-semibold">CC</h1>
       </div>
@@ -30,7 +30,7 @@ const Header = () => {
         </div>
         <img src={Foto} alt="Foto" className="w-12 h-12 ml-4" />
       </div>
-    </div>
+    </header>
   );
 };
 
