@@ -7,9 +7,7 @@ use Src\Routes\Router;
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
-
 $app->addBodyParsingMiddleware();
-
 $app->add(function ($request, $handler) {
     if ($request->getMethod() === 'OPTIONS') {
         $response = new \Slim\Psr7\Response();
@@ -33,7 +31,6 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 $app->addRoutingMiddleware();
-
 $app->addErrorMiddleware(true, true, true);
 
 $schema = new Database();

@@ -1,30 +1,48 @@
 <?php
 
-namespace App\Model;
+namespace Src\Models;
+
+use PDOStatement;
+use PDO;
 
 class User
 {
-    private $db;
+    private PDO $conn;
+    private string $table_name = "users";
 
-    public function __construct()
+    public ?int $id = null;
+    public ?string $username = null;
+    public ?string $password = null;
+    public ?bool $is_admin = null;
+
+    public function __construct(PDO $db)
     {
-        $this->db = new \PDO('mysql:host=localhost;dbname=seu_banco_de_dados', 'usuario', 'senha');
+        $this->conn = $db;
     }
 
-    public function createUser($data)
+    public function login(): ?array
     {
-        $sql = "INSERT INTO users (nome, email, cpf, senha) VALUES (:nome, :email, :cpf, :senha)";
-        $stmt = $this->db->prepare($sql);
-        
-        $stmt->bindParam(':nome', $data['nome']);
-        $stmt->bindParam(':email', $data['email']);
-        $stmt->bindParam(':cpf', $data['cpf']);
-        $stmt->bindParam(':senha', password_hash($data['senha'], PASSWORD_BCRYPT));
-        
-        if ($stmt->execute()) {
-            return ["status" => "success", "message" => "User created successfully."];
-        } else {
-            return ["status" => "error", "message" => "Failed to create user."];
+        $query = "SELECT id, username, password, is_admin FROM {$this->table_name} WHERE username = :username";
+        $stmt = $this->prepareAndExecute($query, [':username' => $this->username]);
+
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+
+        return null;
+    }
+
+    private function prepareAndExecute(string $query, array $params): PDOStatement
+    {
+        try {
+            $stmt = $this->conn->prepare($query);
+            foreach ($params as $key => &$val) {
+                $stmt->bindParam($key, $val);
+            }
+            $stmt->execute();
+            return $stmt;
+        } catch (\PDOException $e) {
+            throw new \Exception("Database error occurred: " . $e->getMessage());
         }
     }
 }

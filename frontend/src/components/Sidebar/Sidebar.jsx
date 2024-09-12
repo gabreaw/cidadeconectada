@@ -10,8 +10,8 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="bg-white flex flex-col border-gray-300 p-6 gap-y-6 border-r w-[271px]">
-        <div className="bg-white flex flex-col p-6 gap-y-6 border-b border-gray-300 w-full">
+      <div className="bg-white flex flex-col border-grayColor p-6 gap-y-6 border-r w-[271px]">
+        <div className="bg-white flex flex-col p-6 gap-y-6 border-b border-grayColor w-full">
           <ul className="flex flex-col gap-y-6">
             <li className="flex items-center ">
               <img src={Inicio} alt="Inicio" className="w-6 h-6 mr-2" />
