@@ -6,8 +6,8 @@ import Foto from "./icones/Foto.svg";
 
 const Header = () => {
   return (
-    <header className="bg-white flex justify-between items-center px-6 h-[89px] border-b border-gray-300">
-      <div className="flex items-center justify-start border-r border-gray-300 h-full w-[247px]">
+    <header className="bg-white flex justify-between items-center px-11 h-[89px] border-b border-gray-300">
+      <div className="flex items-center justify-start border-r-2 border-gray-300 h-full w-[228px]">
         <img src={Logo} alt="Logo" className="w-7 h-7 mr-2" />
         <h1 className="text-xl font-semibold">CC</h1>
       </div>

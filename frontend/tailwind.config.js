@@ -8,7 +8,8 @@ module.exports = {
       colors: {
         primary: '#FA5A23',
         backgroundColor: '#FFFFFF',
-        grayColor: '#DBDBDB',
+        grayColor: '#DBDBDB'
+        ,
       },
       fontFamily: {
         mulish: ["Mulish", "sans-serif"],
