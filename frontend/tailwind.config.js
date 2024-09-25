@@ -8,8 +8,10 @@ module.exports = {
       colors: {
         primary: '#FA5A23',
         backgroundColor: '#FFFFFF',
-        grayColor: '#DBDBDB'
-        ,
+        grayColor: '#DBDBDB',
+        greenColor: '#7AC555',
+        lightGreen: '#0ABB71',
+        lightBlue: '#D7E4FE',
       },
       fontFamily: {
         mulish: ["Mulish", "sans-serif"],
