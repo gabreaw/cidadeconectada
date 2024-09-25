@@ -3,13 +3,23 @@ import Logo from "./icones/Logo.svg";
 import Notificacao from "./icones/Notificacao.svg";
 import Pesquisa from "./icones/Pesquisa.svg";
 import Foto from "./icones/Foto.svg";
+import flechaEsquerda from "./icones/flechaEsquerda.svg";
+import flechaBaixo from "./icones/flechaBaixo.svg";
 
 const Header = () => {
   return (
-    <header className="bg-white flex justify-between items-center px-11 h-[89px] border-b border-gray-300">
-      <div className="flex items-center justify-start border-r-2 border-gray-300 h-full w-[228px]">
-        <img src={Logo} alt="Logo" className="w-7 h-7 mr-2" />
+    <header className="bg-white flex justify-between items-center px-11 h-[89px] border-b border-grayColor">
+      <div className="flex items-center justify-start border-r-2 border-grayColor h-full w-[228px]">
+        
+        <img src={Logo} alt="Logo Cidade Conectada" className="w-7 h-7 mr-2" />
         <h1 className="text-xl font-semibold">CC</h1>
+        <button className="mr-4">
+          <img
+            src={flechaEsquerda}
+            alt="Ocultar barra lateral"
+            className="w-5 h-5"
+          ></img>
+        </button>
       </div>
       <div className="relative flex-grow flex items-center mx-2 ml-40">
         <input
@@ -18,7 +28,7 @@ const Header = () => {
         />
         <img
           src={Pesquisa}
-          alt="Pesquisa"
+          alt="Barra de pesquisa"
           className="absolute left-3 top-1/2 transform -translate-y-1/2"
         />
       </div>
@@ -28,7 +38,10 @@ const Header = () => {
           <h1 className="text-lg font-medium">Amanda Gerhard</h1>
           <h1 className="text-sm">SC, Chapecó</h1>
         </div>
-        <img src={Foto} alt="Foto" className="w-12 h-12 ml-4" />
+        <img src={Foto} alt="Foto de perfil" className="w-12 h-12 ml-4" />
+        <button>
+          <img src={flechaBaixo} alt="Menu" className="w-7 h-7 mr-4" />
+        </button>
       </div>
     </header>
   );
