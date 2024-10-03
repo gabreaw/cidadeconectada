@@ -7,7 +7,7 @@ import './styles/App.css';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div>
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/login" element={<LoginForm />} />

@@ -12,12 +12,12 @@ const Sidebar = () => {
     <>
       <div className="bg-white flex flex-col border-grayColor p-6 gap-y-6 border-r w-[271px]">
         <div className="bg-white flex flex-col p-6 border-b border-grayColor w-full ">
-          <ul className="flex flex-col gap-y-6">
-            <li className="flex items-center ">
+          <ul className="flex flex-col gap-y-6 ">
+            <li className="flex items-center hover:bg-lightBlue">
               <img src={Inicio} alt="Inicio" className="w-6 h-6 mr-2" />
-              <span className="font-semibold">Inicio</span>
+              <span className="font-semibold ">Inicio</span>
             </li>
-            <li className="flex items-center ">
+            <li className="flex items-center hover:bg-lightBlue">
               <img
                 src={criarReclamacao}
                 alt="Criar Reclamação"
@@ -25,19 +25,19 @@ const Sidebar = () => {
               />
               <span className="font-semibold">Criar Reclamação</span>
             </li>
-            <li className="flex items-center ">
+            <li className="flex items-center hover:bg-lightBlue">
               <img
                 src={admPublico}
                 alt="Adm. Públicos"
                 className="w-6 h-6 mr-2"
               />
-              <span className="font-semibold">Adm. Públicos</span>
+              <span className="font-semibold ">Adm. Públicos</span>
             </li>
-            <li className="flex items-center ">
+            <li className="flex items-center hover:bg-lightBlue focus:bg-red-600">
               <img src={perfil} alt="perfil" className="w-6 h-6 mr-2" />
               <span className="font-semibold">Perfil</span>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center hover:bg-lightBlue">
               <img
                 src={configuracoes}
                 alt="Configurações"
@@ -58,7 +58,6 @@ const Sidebar = () => {
           </button>
         </div>
 
-        {/*<div className="bg-white flex flex-col border-grayColor p-6 gap-y-2 w-full">*/}
         <ul>
           <li className="mb-2">
             <Link
@@ -70,10 +69,10 @@ const Sidebar = () => {
             </Link>
 
             <Link
-              to="/login"
-              className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue"
+              to="/"
+              className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue checked:bg-red-600"
             >
-              <span className="text-orange-500 mr-2">&#9679;</span>
+              <span className="text-orange-500 mr-2 ">&#9679;</span>
               Buraco na pista
             </Link>
 
