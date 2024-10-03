@@ -47,56 +47,55 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
-      </div>
-
-      <div className="bg-white flex flex-col border-grayColor p-6 gap-y-2 border-r w-[271px]">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold">Minhas reclamações</h2>
-          {/* Usar icone (biblioteca vuesax) */}
-          <button>
-            <img src={mais} alt="Expandir minhas reclamações" className="w-4 h-4"></img>
-          </button>
-        </div>
-
-        <ul>
-          <li className="mb-2">
-            <Link
-              to="/login"
-              className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue"
-            >
-              <span className="text-greenColor mr-2">&#9679;</span>
-              Problema de Rua
-            </Link>
-
-            <Link
-              to="/"
-              className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue checked:bg-red-600"
-            >
-              <span className="text-orange-500 mr-2 ">&#9679;</span>
-              Buraco na pista
-            </Link>
-
-            <Link
-              to="/login"
-              className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue"
-            >
-              <span className="text-purple-200 mr-2">&#9679;</span>
-              Árvore caída
-            </Link>
-          </li>
-        </ul>
-        <div className="mt-8 p-4 bg-grayColor rounded-lg text-center font-semibold">
-          <div className="flex justify-center mb-2">
-            <span className="text-yellow-500 text-2xl">&#x1F4A1;</span>
+        <div className="bg-white flex flex-col">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold">Minhas reclamações</h2>
+            {/* Usar icone (biblioteca vuesax) */}
+            <button>
+              <img src={mais} alt="Expandir minhas reclamações" className="w-4 h-4"></img>
+            </button>
           </div>
-          <h3 className="text-base font-bold">Notícias</h3>
-          <p className="text-sm font-bold">Notícias da cidade</p>
-          <Link
-            to="/login"
-            className="text-blue-500 hover:underline mt-4 block"
-          >
-            Acessar Notícia
-          </Link>
+
+          <ul>
+            <li className="mb-2">
+              <Link
+                to="/login"
+                className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue"
+              >
+                <span className="text-greenColor mr-2">&#9679;</span>
+                Problema de Rua
+              </Link>
+
+              <Link
+                to="/"
+                className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue checked:bg-red-600"
+              >
+                <span className="text-orange-500 mr-2 ">&#9679;</span>
+                Buraco na pista
+              </Link>
+
+              <Link
+                to="/login"
+                className="flex items-center px-4 py-2 rounded-md font-semibold hover:bg-lightBlue"
+              >
+                <span className="text-purple-200 mr-2">&#9679;</span>
+                Árvore caída
+              </Link>
+            </li>
+          </ul>
+          <div className="mt-8 p-4 bg-grayColor rounded-lg text-center font-semibold">
+            <div className="flex justify-center mb-2">
+              <span className="text-yellow-500 text-2xl">&#x1F4A1;</span>
+            </div>
+            <h3 className="text-base font-bold">Notícias</h3>
+            <p className="text-sm font-bold">Notícias da cidade</p>
+            <Link
+              to="/login"
+              className="text-blue-500 hover:underline mt-4 block"
+            >
+              Acessar Notícia
+            </Link>
+          </div>
         </div>
       </div>
       {/* </div> */}

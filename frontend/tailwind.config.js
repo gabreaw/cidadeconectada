@@ -14,7 +14,7 @@ module.exports = {
         lightBlue: '#D7E4FE',
       },
       fontFamily: {
-        mulish: ["Mulish", "sans-serif"],
+        mulish: ["Outfit", "sans-serif"],
       },
       fontSize: {
         'custom-size': ['32px', {

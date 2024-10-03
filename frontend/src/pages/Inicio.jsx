@@ -6,8 +6,10 @@ const Inicio = () => {
   return (
     <>
       <Header />
-      <Sidebar />
-      <HighlightSidebar />
+      <div className="flex">
+        <Sidebar />
+        <HighlightSidebar />
+      </div>
     </>
   );
 };
