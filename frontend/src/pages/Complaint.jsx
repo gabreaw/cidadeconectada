@@ -1,18 +1,20 @@
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
-import Complaint from "./complaint";
 import HighlightSidebar from "../components/HighlightSidebar/HighlightSidebar";
+import ComplaintFeed from "../components/ComplaintFeed/ComplaintFeed";
+import ResolvedComplaints from "../components/ResolvedComplaints/ResolvedComplaints"
+import React from "react";
 
-const Inicio = () => {
+export default function Complaint() {
   return (
     <>
       <Header />
       <div className="flex">
         <Sidebar />
-        <HighlightSidebar />
+        <ComplaintFeed />
+        <ResolvedComplaints />
+        
       </div>
     </>
   );
-};
-
-export default Inicio;
+}
