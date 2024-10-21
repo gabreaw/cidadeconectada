@@ -3,7 +3,7 @@ import complaintImage from "./images/complaintImage.svg"
 import { FaHeart, FaComment } from 'react-icons/fa';
 import { AiOutlineUser, AiOutlineSend } from 'react-icons/ai';
 
-const ComplaintCard = () => {
+const ComplaintFeed = () => {
   return (
     <div className="bg-white rounded-lg shadow-md max-w-lg mx-auto p-6">
       <div className="flex items-center mb-4">
@@ -55,4 +55,4 @@ const ComplaintCard = () => {
   );
 };
 
-export default ComplaintCard;
+export default ComplaintFeed;
