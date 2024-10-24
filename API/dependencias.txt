@@ -1,0 +1,41 @@
+npm install dev
+npm init -y
+
+npm install prisma
+npx prisma init - y /-- Para configuar no .schema_prisma
+npm install @prisma/client
+npm prisma db push - Faz conexão com o banco
+npm prisma db pull - testa a conexão
+npx prisma studio - server online do prisma para validar API
+npm install express
+
+node --whact server.js - nome do arquivo
+npm install axios
+
+Dependências instaladas:
+
+    Prisma (ORM para interação com o banco de dados):
+        npm install prisma – Instala o Prisma CLI para configurar e manipular o banco de dados.
+        npm install @prisma/client – Instala o cliente Prisma, que permite interagir com o banco de dados em suas aplicações.
+
+    Comandos para configurar e testar o Prisma:
+        npx prisma init – Inicializa a configuração do Prisma e cria o arquivo schema.prisma.
+        npx prisma db push – Sincroniza o modelo do Prisma com o banco de dados.
+        npx prisma db pull – Sincroniza as alterações no banco de dados com o modelo do Prisma.
+        npx prisma studio – Inicia uma interface gráfica para gerenciar o banco de dados.
+
+    Express (Servidor web):
+        npm install express – Instala o Express, um framework web para criar APIs.
+
+    Cors (Habilitar requisições entre domínios diferentes):
+        npm install cors – Instala o middleware CORS para permitir requisições do frontend (React) à API no backend.
+
+    Axios (Requisições HTTP no Frontend):
+        npm install axios – Instala o Axios, uma biblioteca usada para fazer requisições HTTP do frontend para a API.
+
+    Node.js Watcher (opcional para desenvolvimento):
+        node --watch server.js – Comando opcional para rodar o servidor em modo de "watch", 
+        reiniciando automaticamente quando houver alterações no código (a partir do Node.js 18).
+
+        npm install date-fns
+        Utilizado para formatadar as datas "DATETIME" e converter para o tipo ""dd-mm-yyyy"

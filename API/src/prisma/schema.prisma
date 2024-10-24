@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model administrador_public {
+  id_administrador Int       @id @default(autoincrement())
+  cargo            String    @db.VarChar(50)
+  departamento     String    @db.VarChar(50)
+  nome             String    @db.VarChar(100)
+  cpf              String    @unique @db.VarChar(11)
+  solucao          solucao[]
+}
+
+model comentario {
+  id_comentario    Int        @id @default(autoincrement())
+  id_usuario       Int
+  id_publicacao    Int
+  texto_comentario String
+  data_comentario  DateTime   @db.Date
+  publicacao       publicacao @relation(fields: [id_publicacao], references: [id_publicacao], onDelete: Cascade)
+  usuario          usuario    @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade)
+}
+
+model problema {
+  id_problema        Int         @id @default(autoincrement())
+  descricao_problema String
+  data               DateTime    @db.Date
+  id_usuario         Int
+  caminho_imagem     String?
+  endereco           String
+  categoria          String      @db.VarChar(50)
+  usuario            usuario     @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade)
+  protocolo          protocolo[]
+}
+
+model protocolo {
+  id_protocolo Int          @id @default(autoincrement())
+  id_problema  Int
+  id_solucao   Int?
+  problema     problema     @relation(fields: [id_problema], references: [id_problema], onDelete: NoAction, onUpdate: NoAction)
+  solucao      solucao?     @relation(fields: [id_solucao], references: [id_solucao], onDelete: NoAction, onUpdate: NoAction)
+  publicacao   publicacao[]
+}
+
+model publicacao {
+  id_publicacao Int          @id @default(autoincrement())
+  id_usuario    Int
+  id_protocolo  Int
+  comentario    comentario[]
+  protocolo     protocolo    @relation(fields: [id_protocolo], references: [id_protocolo], onDelete: Cascade)
+  usuario       usuario      @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade)
+}
+
+model solucao {
+  id_solucao           Int                  @id @default(autoincrement())
+  descricao_solucao    String
+  data_solucao         DateTime             @db.Date
+  data_recebimento     DateTime             @db.Date
+  id_admin_public      Int
+  protocolo            protocolo[]
+  administrador_public administrador_public @relation(fields: [id_admin_public], references: [id_administrador], onDelete: SetNull)
+}
+
+model usuario {
+  id_usuario Int          @id @default(autoincrement())
+  cpf        String       @unique @db.VarChar(11)
+  nome       String       @db.VarChar(100)
+  email      String       @unique @db.VarChar(255)
+  senha_user String       @db.VarChar(255)
+  comentario comentario[]
+  problema   problema[]
+  publicacao publicacao[]
+}

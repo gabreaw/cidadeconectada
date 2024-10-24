@@ -11,9 +11,11 @@ const RegisterForm = () => {
     nome: "",
     email: "",
     cpf: "",
-    senha: "",
+    senha_user: "",
     confirmarSenha: "",
   });
+
+  const [message, setMessage] = useState('');
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,7 +26,7 @@ const RegisterForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/register",// porta 8000? /api/ ???
+        "http://localhost:4444/usuario",// porta 8000? /api/ ???
         formData,
         {
           headers: {
@@ -71,12 +73,19 @@ const RegisterForm = () => {
             onChange={handleInputChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+          {/* <input
+            type="date"
+            name="data_nascismento"
+            value={formData.data}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          /> */}
           <div className="relative">
             <input
               type="password"
               name="senha"
               placeholder="Sua senha"
-              value={formData.senha}
+              value={formData.senha_user}
               onChange={handleInputChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />

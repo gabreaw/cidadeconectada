@@ -20,6 +20,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+API/src/node_modules
+API/src/minha-app/node_modules
+API/node_modules
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
