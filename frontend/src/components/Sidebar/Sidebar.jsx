@@ -13,11 +13,11 @@ const Sidebar = () => {
       <div className="bg-white flex flex-col border-grayColor p-6 gap-y-6 border-r w-[271px]">
         <div className="bg-white flex flex-col p-6 border-b border-grayColor w-full ">
           <ul className="flex flex-col gap-y-6 ">
-            <li className="flex items-center hover:bg-lightBlue">
+            <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap">
               <img src={Inicio} alt="Inicio" className="w-6 h-6 mr-2" />
               <span className="font-semibold ">Inicio</span>
             </li>
-            <li className="flex items-center hover:bg-lightBlue">
+            <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap">
               <img
                 src={criarReclamacao}
                 alt="Criar Reclamação"
@@ -25,19 +25,19 @@ const Sidebar = () => {
               />
               <span className="font-semibold">Criar Reclamação</span>
             </li>
-            <li className="flex items-center hover:bg-lightBlue">
+            <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap">
               <img
                 src={admPublico}
                 alt="Adm. Públicos"
                 className="w-6 h-6 mr-2"
               />
-              <span className="font-semibold ">Adm. Públicos</span>
+              <span className="font-semibold">Adm. Públicos</span>
             </li>
-            <li className="flex items-center hover:bg-lightBlue focus:bg-red-600">
+            <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 focus:bg-red-600 whitespace-nowrap">
               <img src={perfil} alt="perfil" className="w-6 h-6 mr-2" />
               <span className="font-semibold">Perfil</span>
             </li>
-            <li className="flex items-center hover:bg-lightBlue">
+            <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap-4">
               <img
                 src={configuracoes}
                 alt="Configurações"
