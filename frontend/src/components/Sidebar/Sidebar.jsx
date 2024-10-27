@@ -15,7 +15,7 @@ const Sidebar = () => {
           <ul className="flex flex-col gap-y-6 ">
             <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap">
               <img src={Inicio} alt="Inicio" className="w-6 h-6 mr-2" />
-              <span className="font-semibold ">Inicio</span>
+              <a href="/" className="font-semibold">Inicio</a>
             </li>
             <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap">
               <img
@@ -23,7 +23,7 @@ const Sidebar = () => {
                 alt="Criar Reclamação"
                 className="w-6 h-6 mr-2"
               />
-              <span className="font-semibold">Criar Reclamação</span>
+             <a href="/" className="font-semibold">Criar Reclamação</a>
             </li>
             <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap">
               <img
@@ -31,11 +31,11 @@ const Sidebar = () => {
                 alt="Adm. Públicos"
                 className="w-6 h-6 mr-2"
               />
-              <span className="font-semibold">Adm. Públicos</span>
+              <a href="/" className="font-semibold">Adm. Públicos</a>
             </li>
             <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 focus:bg-red-600 whitespace-nowrap">
               <img src={perfil} alt="perfil" className="w-6 h-6 mr-2" />
-              <span className="font-semibold">Perfil</span>
+              <a href="/" className="font-semibold">Perfil</a>
             </li>
             <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap-4">
               <img
@@ -43,7 +43,7 @@ const Sidebar = () => {
                 alt="Configurações"
                 className="w-6 h-6 mr-2"
               />
-              <span className="font-semibold">Configurações</span>
+              <a href="/" className="font-semibold">Configurações</a>
             </li>
           </ul>
         </div>
