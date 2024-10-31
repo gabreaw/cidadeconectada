@@ -39,3 +39,5 @@ Dependências instaladas:
 
         npm install date-fns
         Utilizado para formatadar as datas "DATETIME" e converter para o tipo ""dd-mm-yyyy"
+
+        npm install jsonwebtoken -> Autenticação do ususario biblioteca
