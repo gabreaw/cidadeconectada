@@ -1,4 +1,4 @@
-npm install dev
+npm install dev -> linux
 npm init -y
 
 npm install prisma

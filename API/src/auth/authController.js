@@ -11,10 +11,11 @@ const JWT_SECRET = process.env.JWT_SECRET || 'sua_chave_secreta'; // Chave secre
 export const login = async (req, res) => {
     const { email, senha } = req.body;
 
-    try {
-        console.log("Email fornecido:", email);
-        console.log("Senha fornecida:", senha);
+    console.log("Email fornecido:", email);
+    console.log("Senha fornecida:", senha);
 
+    try {
+       
         const user = await prisma.usuario.findUnique({ where: { email } });
         console.log("Usuário encontrado:", user);
 
@@ -23,7 +24,13 @@ export const login = async (req, res) => {
             return res.status(401).json({ error: 'Usuário não encontrado' });
         }
 
+        console.log("Hash da senha do usuário:", user.senha_user); // Log do hash
+
+        // Verificando a senha
         const isPasswordValid = bcrypt.compare(senha, user.senha_user);
+
+        console.log("Senha válida:", isPasswordValid); // Log do resultado da verificação
+
         if (isPasswordValid) {
             const token = jwt.sign(
                 { userId: user.id, email: user.email },

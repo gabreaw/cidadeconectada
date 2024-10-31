@@ -3,6 +3,7 @@
 import express from 'express'; // Importando express
 import { createUser, listUsers, updateUser, deleteUser } from '../controllers/userController.js'; // Importando funções do controller
 import { login } from '../auth/authController.js'; // Importando a função de login
+import { autenticaToken } from '../auth/authMiddleware.js'; // Ajuste o caminho conforme necessário
 
 const router = express.Router();
 
