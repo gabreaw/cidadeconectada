@@ -9,10 +9,10 @@ const JWT_SECRET = process.env.JWT_SECRET || 'sua_chave_secreta'; // Chave secre
 
 // Função de login
 export const login = async (req, res) => {
-    const { email, senha } = req.body;
+    const { email, senha_user } = req.body;
 
     console.log("Email fornecido:", email);
-    console.log("Senha fornecida:", senha);
+    console.log("Senha fornecida:", senha_user);
 
     try {
        
@@ -27,7 +27,7 @@ export const login = async (req, res) => {
         console.log("Hash da senha do usuário:", user.senha_user); // Log do hash
 
         // Verificando a senha
-        const isPasswordValid = bcrypt.compare(senha, user.senha_user);
+        const isPasswordValid = await bcrypt.compare(senha_user, user.senha_user);
 
         console.log("Senha válida:", isPasswordValid); // Log do resultado da verificação
 
@@ -37,12 +37,13 @@ export const login = async (req, res) => {
                 JWT_SECRET,
                 { expiresIn: '1h' }
             );
+            console.log("Token gerado:", token); // Verificar se o token é gerado
             return res.json({ token });
         } else {
-            return res.status(401).json({ error: 'Credenciais inválidas' });
+            return res.status(401).json({ error: 'Credenciais inválidas mermao' });
         }
     } catch (error) {
         console.error("Erro ao fazer login:", error);
-        return res.status(500).json({ error: "Erro ao fazer login" });
+        return res.status(500).json({ error: "Erro ao fazer login cara" });
     }
 };

@@ -79,16 +79,16 @@ export const updateUser = async (req, res) => {
 
 // Função para excluir um usuário
 export const deleteUser = async (req, res) => {
-    const id = parseInt(req.params.id);
+    const id_usuario = parseInt(req.params.id);
 
     // Verifica se o ID é um número inteiro
-    if (!Number.isInteger(id)) {
+    if (!Number.isInteger(id_usuario)) {
         return res.status(400).json({ error: "ID deve ser um número inteiro." });
     }
 
     // Verifica se o usuário existe
     const userAlreadyExist = await prisma.usuario.findUnique({
-        where: { id: id },
+        where: { id_usuario: id_usuario },
     });
 
     if (!userAlreadyExist) {
@@ -97,7 +97,7 @@ export const deleteUser = async (req, res) => {
 
     try {
         await prisma.usuario.delete({
-            where: { id: id },
+            where: { id_usuario: id_usuario },
         });
         return res.status(200).json({ message: "Usuário excluído com sucesso!" });
     } catch (error) {

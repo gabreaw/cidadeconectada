@@ -15,7 +15,7 @@ model administrador_public {
   cpf              String    @unique @db.VarChar(11)
   solucao          solucao[]
 }
-
+  
 model comentario {
   id_comentario    Int        @id @default(autoincrement())
   id_usuario       Int
