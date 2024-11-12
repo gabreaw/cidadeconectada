@@ -1,24 +1,49 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import cclogo from "../assets/cc-logo.svg";
 import "../styles/App.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+  //Authenticação login
+  const [email, setEmail] = useState('');
+  const [senha_user, setSenha] = useState('');
+  const [error, setError] = useState('');
+
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
- //Logica de autenticação
 
+    try {
+      const response = await fetch('http://localhost:4444/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, senha_user }),
+      });
 
-    navigate("/inicio");
+      const data = await response.json();
+      if (response.ok) {
+        //armazena o Token localStorage
+        localStorage.setItem('token', data.token);
+
+        //redireciona o usuario para pagina de inicio
+        navigate('/')
+      } else {
+        setError(data.error || 'Erro ao fazer login');
+      }
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      setError('Erro de conexão com o servidor');
+    }
   };
 
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
+      <form onSubmit={handleLogin} className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
         <img src={cclogo} alt="Icone cidade Conectada" width={660}></img>
         <h2 className="text-2xl font-bold mb-6 text-center">
           Entre com a sua conta
@@ -29,6 +54,8 @@ const LoginForm = () => {
             placeholder="Seu email"
             required
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-4 relative">
@@ -37,7 +64,15 @@ const LoginForm = () => {
             placeholder="Sua senha"
             required
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={senha_user}
+            onChange={(e) => setSenha(e.target.value)}
           />
+
+          {error && (
+            <div className="mb-4 text-red-500 text-sm text-center">
+              {error}
+            </div>
+          )}
           <button
             type="button"
             className="absolute right-2 top-2 text-gray-500 focus:outline-none"
