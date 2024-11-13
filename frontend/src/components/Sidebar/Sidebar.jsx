@@ -23,7 +23,7 @@ const Sidebar = () => {
                 alt="Criar Reclamação"
                 className="w-6 h-6 mr-2"
               />
-             <a href="/" className="font-semibold">Criar Reclamação</a>
+             <a href=" /ComplaintForm" className="font-semibold">Criar Reclamação</a>
             </li>
             <li className="flex items-center hover:bg-lightBlue cursor-pointer rounded-md px-4 py-2 whitespace-nowrap">
               <img

@@ -3,6 +3,7 @@ import React from 'react';
 import LoginForm from './pages/LoginForm';
 import RegisterForm from './pages/RegisterForm';
 import Complaint from './pages/Complaint';
+import ComplaintForm from './pages/ComplaintForm';
 import Inicio from './pages/Inicio';
 import './styles/App.css';
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/complaint" element={<Complaint />} />
+          <Route path="/complaintForm" element={<ComplaintForm />} />
         </Routes>
       </div>
     </Router>
