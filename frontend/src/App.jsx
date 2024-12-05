@@ -5,6 +5,7 @@ import RegisterForm from './pages/RegisterForm';
 import Complaint from './pages/Complaint';
 import ComplaintForm from './pages/ComplaintForm';
 import Inicio from './pages/Inicio';
+import AdminProfile from './pages/AdminProfile';
 import './styles/App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/complaint" element={<Complaint />} />
           <Route path="/complaintForm" element={<ComplaintForm />} />
+          <Route path="/adminProfile" element={<AdminProfile />} />
         </Routes>
       </div>
     </Router>
