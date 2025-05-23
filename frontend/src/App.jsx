@@ -7,6 +7,7 @@ import ComplaintForm from './pages/ComplaintForm';
 import Inicio from './pages/Inicio';
 import AdminProfile from './pages/AdminProfile';
 import './styles/App.css';
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/complaint" element={<Complaint />} />
           <Route path="/complaintForm" element={<ComplaintForm />} />
           <Route path="/adminProfile" element={<AdminProfile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>

@@ -15,7 +15,7 @@ model administrador_public {
   cpf              String    @unique @db.VarChar(11)
   solucao          solucao[]
 }
-  
+
 model comentario {
   id_comentario    Int        @id @default(autoincrement())
   id_usuario       Int
@@ -67,12 +67,13 @@ model solucao {
 }
 
 model usuario {
-  id_usuario Int          @id @default(autoincrement())
-  cpf        String       @unique @db.VarChar(11)
-  nome       String       @db.VarChar(100)
-  email      String       @unique @db.VarChar(255)
-  senha_user String       @db.VarChar(255)
-  comentario comentario[]
-  problema   problema[]
-  publicacao publicacao[]
+  id_usuario      Int          @id @default(autoincrement())
+  cpf             String       @unique @db.VarChar(11)
+  nome            String       @db.VarChar(100)
+  email           String       @unique @db.VarChar(255)
+  senha_user      String       @db.VarChar(255)
+  data_nascimento DateTime?    @db.Date
+  comentario      comentario[]
+  problema        problema[]
+  publicacao      publicacao[]
 }

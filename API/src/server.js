@@ -1,23 +1,28 @@
 // src/server.js
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
-import express from 'express'; // Importando express
-import cors from 'cors'; // Importando cors
-import dotenv from 'dotenv'; // Importando dotenv
-import userRoutes from './routes/userRoutes.js'; // Importando as rotas de usuário
+import userRoutes from './routes/userRoutes.js';
+import dashboardRoutes from './routes/dashboardRoutes.js'; // Importação padrão, como definido em dashboardRoutes.js
 
 dotenv.config();
 
 const app = express();
 app.use(express.json()); // Para interpretar JSON
-app.use(cors()); // Habilitar CORS
+app.use(cors());         // Habilitar CORS
 
-// Usando as rotas de usuário
-app.use('/api', userRoutes);
+// Rotas de Usuário
+app.use('/api/users', userRoutes);
 
-// Rota de health check
+// Rotas do Dashboard
+app.use('/api/dashboard', dashboardRoutes);
+
+// Health check
 app.get('/health', (req, res) => {
-    return res.json("Servidor está funcionando");
+    res.json({ message: "Servidor está funcionando" });
 });
 
 // Inicializa o servidor
-app.listen(4444, () => console.log("Servidor rodando em http://localhost:4444"));
+const PORT = process.env.PORT || 4444;
+app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));

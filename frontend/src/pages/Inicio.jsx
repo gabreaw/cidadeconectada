@@ -1,6 +1,6 @@
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
-import Complaint from "./complaint";
+//import Complaint from "./complaint";
 import HighlightSidebar from "../components/HighlightSidebar/HighlightSidebar";
 import image1 from "../images/image1.png";
 import image2 from "../images/image2.png";

@@ -41,3 +41,8 @@ Dependências instaladas:
         Utilizado para formatadar as datas "DATETIME" e converter para o tipo ""dd-mm-yyyy"
 
         npm install jsonwebtoken -> Autenticação do ususario biblioteca
+
+
+    ///Você está usando import/export, então o Node precisa saber que o projeto é um módulo. Para isso, adicione no package.json:
+
+"type": "module"
