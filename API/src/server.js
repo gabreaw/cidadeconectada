@@ -13,7 +13,7 @@ app.use(express.json()); // Para interpretar JSON
 app.use(cors());         // Habilitar CORS
 
 // Rotas de Usuário
-app.use('/api/users', userRoutes);
+app.use('/api/', userRoutes);
 
 // Rotas do Dashboard
 app.use('/api/dashboard', dashboardRoutes);
@@ -22,6 +22,7 @@ app.use('/api/dashboard', dashboardRoutes);
 app.get('/health', (req, res) => {
     res.json({ message: "Servidor está funcionando" });
 });
+
 
 // Inicializa o servidor
 const PORT = process.env.PORT || 4444;
